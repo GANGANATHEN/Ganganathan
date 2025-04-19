@@ -1,0 +1,100 @@
+"use client"
+import React, {useState} from 'react'
+
+const task5_1 = () => {
+    const [data, setData] = useState({
+            data1: [
+              {
+                MainId: 1111,
+                firstName: "Sherlock",
+                lastName: "Homes",
+                categories: [
+                  {
+                    CategoryID: 1,
+                    CategoryName: "Example",
+                  },
+                ],
+              },
+              {
+                MainId: 1661,
+                firstName: "Sherlock",
+                lastName: "Homes",
+                categories: [
+                  {
+                    CategoryID: 1,
+                    CategoryName: "Example",
+                  },
+                ],
+              },
+              
+            ],
+            data2: [
+              {
+                MainId: 1111,
+                firstName: "Sherlock",
+                lastName: "Homes",
+                categories: [
+                  {
+                    CategoryID: 1,
+                    CategoryName: "Example",
+                  },
+                ],
+              },
+              
+            ],
+            
+          });
+    
+          const [newObject, setNewObject] = useState({})
+          const [newName, setNewName] = useState('Hello');
+        //   const [cate, setCate] = useState({})
+          // function removeData(){
+          //   console.log(data)
+          //   // let toRemove = data.data1[0].categories[0];
+          //   let elementToRemove = "data2"
+          //   // let elementToRemove = data.data1[0].categories[0];
+          //   // setData(prev => prev.filter(data => data !== elementToRemove ))
+          //   // setCate(toRemove)
+          //   // console.log(cate)
+          //   const newObject = { ...data}; 
+          //   delete newObject[elementToRemove];
+          //   setData(newObject);
+          //   // console.log(cate)
+          // }
+          // console.log(data)
+          // const deta = data.data1[0].categories[0];
+          // console.log(deta)
+    
+          function updateName(){
+            console.log("remove")
+            let Data1 = data.data1
+            console.log(Data1.MainId)
+            console.log(newName)
+            // setData([...data, { firstName: newName }])
+            // console.log(data.data2)
+            let deta = data.data1[0].firstName[0];
+            deta = newName
+            console.log(deta)
+            setData([...data, { deta }])
+    
+          }
+  return (
+    <div>
+        <h1>Data1 :</h1>
+        {data.data1.map((datas,index)=>{
+            <div key={index}>
+              <p>{datas.firstName}</p>
+            </div>
+        })}
+        <br></br>
+        {/* <button onClick={removeData}>remove Data</button> */}
+        <br></br>
+        
+        <button onClick={updateName}>Update Name</button>
+      
+    </div>
+  )
+}
+
+export default task5_1
+

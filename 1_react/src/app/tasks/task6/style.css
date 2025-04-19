@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+.bg-width{
+    width: 20px;
+    height: 20px;
+}

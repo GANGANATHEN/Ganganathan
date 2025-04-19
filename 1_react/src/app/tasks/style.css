@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+
+.color-width{
+    width: 30px;
+    height: 25px;
+    border-radius: 5px;
+}
