@@ -1,10 +1,65 @@
 "use client"
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { useRouter } from 'next/navigation'
 
 const SignUp = () => {
 
     const router = useRouter()
+
+    const [useremail, setUseremail] = useState("");
+    const [password, setPassword] = useState("");
+    const [retypePassword, setRetypePassword] = useState("");
+
+    //message
+    const [passmessage, setPassmessage] = useState("");
+    const [errormessage, setErrormessage] = useState("");
+    const [error, setError] = useState("")
+
+    // useEffect(() => {
+    //     localStorage.setItem('favorites', JSON.stringify(userInfo));
+    //   }, [userInfo]);
+
+    const validateEmail = () => {
+        console.log("i'm enter");
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(useremail)) {
+          setError('Please enter a valid email address');
+        } else {
+          setError('');
+          console.log("i'm enter in else");
+        }
+    }
+
+    useEffect(() => {
+        validateEmail();
+    }, [useremail]);
+
+    function handleSignup() {
+        const userInfo = JSON.parse(localStorage.getItem("userInfo")) || [];
+        userInfo.push({
+            email: useremail,
+            password: password,
+        });
+        if (password !== retypePassword) {
+            setPassmessage("Error msg if didn't pass the validation or different password");
+            return;
+        }else {
+            setPassmessage("");
+        }
+        if (useremail === "" || password === "") {
+            setErrormessage("Error msg if didn't pass the validation");
+            return;
+        }else {
+            setErrormessage("");
+        }
+        // if (userInfo.some(user => user.email === useremail)) {
+        //     alert("Email already exists");
+        //     return;
+        // }
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+        console.log(userInfo);
+        // router.push('/')
+    }
 
   return (
     <div>
@@ -16,27 +71,36 @@ const SignUp = () => {
             type="email"
             placeholder="email@example.com"
             className="border-2 border-gray-300 rounded-md p-2 w-[100%]"
+            onChange={(e) => setUseremail(e.target.value)}
+            value={useremail}
           />
-            <p className='mb-2 text-[12px] text-red-500 px-5'>Error msg if didn&apos;t pass the validation</p>
+            <p className='mb-2 text-[12px] text-red-500 px-5'>{errormessage}</p>
           <label className="text-[15px] font-bold">Password</label><br />
           <input
             type="password"
             placeholder="Password"
             className="border-2 border-gray-300 rounded-md p-2 w-[100%]"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
           />
-          <p className='mb-2 text-[12px] text-red-500 px-5'>Error msg if didn&apos;t pass the validation or different password</p>
+          <p className='mb-2 text-[12px] text-red-500 px-5'>{passmessage}</p>
           <label className="text-[15px] font-bold">Retype Password
             </label><br />
           <input
             type="password"
             placeholder="Password"
             className="border-2 border-gray-300 rounded-md p-2 w-[100%] mb-2"
-          /><br />
-          <button className="bg-blue-500 text-white rounded-md px-4 py-1 my-3">
+            onChange={(e) => setRetypePassword(e.target.value)}
+            value={retypePassword}
+          />
+          <p className='mb-2 text-[12px] text-red-500 px-5'>{error}</p>
+          <button className="bg-blue-500 text-white rounded-md px-4 py-1 my-3"
+          onClick={() => {handleSignup()}}
+          >
             SignUp
           </button>
         </div>
-        <h3 className="px-5 py-3 font-bold text-[15px]">Already have account? {' '}
+        <h3 className="px-5 py-5 font-bold text-[15px]">Already have account? {' '}
         <button onClick={() => router.push('/')} className="text-red-500">Login</button></h3>
       </div>
     </div>
