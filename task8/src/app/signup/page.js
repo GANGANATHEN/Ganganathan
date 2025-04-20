@@ -26,40 +26,54 @@ const SignUp = () => {
           setError('Please enter a valid email address');
         } else {
           setError('');
+          setCorrect(true);
           console.log("i'm enter in else");
         }
     }
 
-    useEffect(() => {
-        validateEmail();
-    }, [useremail]);
+    // useEffect(() => {
+    //     validateEmail();
+    // }, [useremail]);
 
     function handleSignup() {
-        const userInfo = JSON.parse(localStorage.getItem("userInfo")) || [];
-        userInfo.push({
-            email: useremail,
-            password: password,
-        });
-        if (password !== retypePassword) {
-            setPassmessage("Error msg if didn't pass the validation or different password");
-            return;
-        }else {
-            setPassmessage("");
-        }
-        if (useremail === "" || password === "") {
-            setErrormessage("Error msg if didn't pass the validation");
-            return;
-        }else {
-            setErrormessage("");
-        }
-        // if (userInfo.some(user => user.email === useremail)) {
-        //     alert("Email already exists");
-        //     return;
-        // }
-        localStorage.setItem('userInfo', JSON.stringify(userInfo));
-        console.log(userInfo);
-        // router.push('/')
+      const userInfo = JSON.parse(localStorage.getItem("userInfo")) || [];
+    
+      if (useremail === "" || password === "") {
+        setErrormessage("Please fill in all fields");
+        return;
+      } else {
+        setErrormessage("");
+      }
+    
+      if (password !== retypePassword) {
+        setPassmessage("Passwords do not match");
+        return;
+      } else {
+        setPassmessage("");
+      }
+    
+      if (userInfo.some(user => user.email.toLowerCase() === useremail.toLowerCase())) {
+        setError("Email already exists");
+        return;
+      }
+    
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(useremail)) {
+        setError("Please enter a valid email address");
+        return;
+      } else {
+        setError("");
+      }
+    
+      userInfo.push({
+        email: useremail,
+        password: password,
+      });
+    
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+      router.push('/');
     }
+    
 
   return (
     <div>
@@ -94,14 +108,14 @@ const SignUp = () => {
             value={retypePassword}
           />
           <p className='mb-2 text-[12px] text-red-500 px-5'>{error}</p>
-          <button className="bg-blue-500 text-white rounded-md px-4 py-1 my-3"
+          <button className="bg-blue-500 text-white rounded-md px-4 py-1 my-3 cursor-pointer"
           onClick={() => {handleSignup()}}
           >
             SignUp
           </button>
         </div>
         <h3 className="px-5 py-5 font-bold text-[15px]">Already have account? {' '}
-        <button onClick={() => router.push('/')} className="text-red-500">Login</button></h3>
+        <button onClick={() => router.push('/')} className="text-red-500 cursor-pointer">Login</button></h3>
       </div>
     </div>
   )
