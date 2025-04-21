@@ -21,7 +21,8 @@ import Image from "next/image";
 // import Contact from "./try/context_text/contact"
 // import Store from "./try/zustand/page1";
 // import Store1 from "./try/zustand/page2";
-import Task7 from "./tasks/task7"
+// import Task7 from "./tasks/task7"
+import Urdo from "./demo/urdo";
 
 
 export default function Home() {
@@ -54,7 +55,8 @@ export default function Home() {
           {/* <Store />
           <Store1 /> */}
       </div>
-        <Task7 />
+        {/* <Task7 /> */}
+        <Urdo />
     </div>
   );
 }
