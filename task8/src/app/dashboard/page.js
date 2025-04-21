@@ -1,10 +1,20 @@
 "use client"
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import { useRouter} from 'next/navigation'
 
 const Dashboard = () => {
 
     const router = useRouter()
+
+    const [allData, setAllData] = useState({})
+
+    useEffect(() => {
+        const userInfo = JSON.parse(localStorage.getItem("userInfo")) || [];
+        setAllData(userInfo);
+        console.log(userInfo);
+    }, []);
+
+    
 
   return (
     <div>
