@@ -1,6 +1,8 @@
 "use client"
 import React,{use, useState} from 'react'
 import { useRouter,redirect } from 'next/navigation'
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 export default function Home() {
 
@@ -12,6 +14,7 @@ export default function Home() {
   })
   const [error, setError] = useState("")
   const [passmessage, setPassmessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false)
 
 
   function handleLogin() {
@@ -52,13 +55,31 @@ export default function Home() {
           />
             <p className='mb-2 text-[12px] text-red-500 px-5'>{error}</p>
           <label className="text-[15px] font-bold">Password</label><br />
-          <input
-            type="password"
+            <div className="relative">
+            <input
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
             className="border-2 border-gray-300 rounded-md p-2 w-[100%]"
             onChange={(e) => setUserDetails({ ...userDetails, password: e.target.value })}
             value={userDetails.password}
           />
+            <button
+              type="button"
+              aria-label={
+              showPassword ? "Password Visible" : "Password Invisible."
+              }
+              className="text-black dark:text-white"
+              onClick={() => {
+              setShowPassword((prev) => !prev);
+                        }}
+               >
+              {showPassword ? (
+                <FaRegEye className='absolute right-[2%] top-[12px]'/>
+                 ) : (
+                   <FaRegEyeSlash className='absolute right-[2%] top-[12px]'/>
+                  )}
+              </button>
+            </div>
             <p className='mb-2 text-[12px] text-red-500 px-5'>{passmessage}</p>
           <button className="bg-blue-500 text-white rounded-md px-4 py-1 my-3 cursor-pointer"
             onClick={() =>handleLogin()}
