@@ -19,8 +19,11 @@ export default function Udo() {
       alert("This field is required.");
       return;
     }
-    setData(prev => [...prev, { id: prev.length, data1: val }]);
-    input1Ref.current.value = "";
+    setData(prev => [...prev, { 
+        id: prev.length,
+        data1: val 
+    }]);
+    input2Ref.current.value = "";
   };
 
   const handleData2 = () => {
@@ -29,20 +32,22 @@ export default function Udo() {
       alert("This field is required.");
       return;
     }
-    setData(prev => [...prev, { id: prev.length, data2: val }]);
-    input2Ref.current.value = "";
+    setData(prev => [...prev, { 
+        id: prev.length, 
+        data2: val 
+    }]);
+    input1Ref.current.value = "";
   };
 
   const handleUndo = () => {
-    const newIndex = currentIndex - 1;
+    const newIndex = currentIndex-1;
     if (newIndex >= 0) {
       setCurrentIndex(newIndex);
-      const item = data[newIndex];
-      if (item.data1) {
-        input1Ref.current.value = item.data1;
+      if (data[newIndex].data1) {
+        input1Ref.current.value = data[newIndex].data1;
         input2Ref.current.value = "";
       } else {
-        input2Ref.current.value = item.data2;
+        input2Ref.current.value = data[newIndex].data2;
         input1Ref.current.value = "";
       }
     }
@@ -53,11 +58,11 @@ export default function Udo() {
     if (newIndex < data.length) {
       setCurrentIndex(newIndex);
       const item = data[newIndex];
-      if (item.data1) {
-        input1Ref.current.value = item.data1;
+      if (data[newIndex].data1) {
+        input1Ref.current.value = data[newIndex].data1;
         input2Ref.current.value = "";
       } else {
-        input2Ref.current.value = item.data2;
+        input2Ref.current.value = data[newIndex].data2;
         input1Ref.current.value = "";
       }
     }
