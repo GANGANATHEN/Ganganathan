@@ -18,9 +18,10 @@ export default function Home() {
     }
   ])
   const [undo, setUndo] = useState("")
-  // const [redo, setRedo] = useState("")
+  const [data1, setData1] = useState("")
+  const [data2, setData2] = useState("")
 
-  const [udoCount, setUdoCount] = useState(data.length-1)
+  const [udoCount, setUdoCount] = useState(data.length)
 
   useEffect(() => { 
     setUdoCount(data.length-1)
@@ -30,77 +31,63 @@ export default function Home() {
   console.log(data);
 
 
-  const data1 = document.querySelector('input[type="text"]');
-
   function handleData1() {
-  const data0 = document.querySelector('input[type="text"]').value;
-    if(data0===""){
+    if(data1===""){
       alert("This field is required.")
     }else{
       setData(prevState => [...prevState, {
         id: prevState.length,
-        data1: data0
+        data1: data1
       }])
-      console.log("else data1",data0);
+      console.log("else data1",data1);
     }
-  console.log("fun data1",data0);
-  
+  console.log("fun data1",data1);
+    setData2("")
   }
 
   function handleData2() {
-  const data01 = document.querySelectorAll('input[type="text"]')[1];
-    if(data01===""){
+    if(data2===""){
       alert("This field is required.")
     }else{
       setData(prevState => [...prevState, {
         id: prevState.length,
-        data2: data01
+        data2: data2
       }])
-      console.log("else data2",data01);
+      console.log("else data2",data2);
     }
-  console.log("fun data2",data01);
-  
+  console.log("fun data2",data2);
+    setData1("")
   }
 
-  const data2 = document.querySelectorAll('input[type="text"]')[1];
-
-  // function handleUndo() {
-  //   console.log("us",udoCount);
-  //   setUdoCount(prevState => prevState - 1)
-  //   if(data[`${udoCount}`].data1){
-  //     data1.value = data[`${udoCount}`].data1
-  //     data2.value = ""
-  //   }else{
-  //     data2.value = data[`${udoCount}`].data2
-  //     data1.value = ""
-  //   }
-  //   console.log("ue",udoCount);
-  // }
-
   function handleUndo() {
-    const newIndex = udoCount - 1;
-    if (newIndex >= 0) {
-      setUdoCount(newIndex);
-      const currentData = data[newIndex];
-      if (currentData.data1) {
-        input1Ref.current.value = currentData.data1;
-        input2Ref.current.value = "";
-      } else {
-        input2Ref.current.value = currentData.data2;
-        input1Ref.current.value = "";
+    console.log("us",udoCount);
+    var count = udoCount - 1
+    if(count>=0){
+      setUdoCount(count)
+      if(data[`${count}`].data1){
+        setData1(data[`${udoCount}`].data1)
+        setData2("")
+      }else{
+        setData2(data[`${udoCount}`].data2)
+        setData1("")
       }
     }
+    
+    console.log("ue",udoCount);
   }
 
   function handleRedo() { 
     console.log("rs",udoCount); 
-    setUdoCount(prevState => prevState + 1)
-    if(data[`${udoCount}`].data1){
-      data1.value = data[`${udoCount}`].data1
-      data2.value = ""
-    }else{
-      data2.value = data[`${udoCount}`].data2
-      data1.value = ""
+    var count = udoCount + 1
+    if(count<data.length){
+      setUdoCount(count)
+      if(data[`${count}`].data1){
+        setData1(data[`${udoCount}`].data1)
+        setData2("")
+      }else{
+        setData2(data[`${udoCount}`].data2)
+        setData1("")
+      }
     }
     console.log("re",udoCount); 
   }
@@ -110,11 +97,11 @@ export default function Home() {
   return (
     <div>
         <div className='mt-20 px-30'>
-        <input className='border-2' type='text'></input> 
+        <input className='border-2' value={data1} type='text' onChange={(e)=>setData1(e.target.value)}></input> 
         <button className='border-2 px-1 mx-2' onClick={()=>handleData1()}>save</button>
          <br></br>
         <br></br>
-        <input className='border-2' type='text'></input>
+        <input className='border-2' type='text' onChange={(e)=>setData2(e.target.value)}></input>
         <button className='border-2 px-1 mx-2' onClick={()=>handleData2()}>save</button>
         <br></br>
         <div className="flex gap-3 my-2">

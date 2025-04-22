@@ -57,7 +57,6 @@ export default function Udo() {
     const newIndex = currentIndex + 1;
     if (newIndex < data.length) {
       setCurrentIndex(newIndex);
-      const item = data[newIndex];
       if (data[newIndex].data1) {
         input1Ref.current.value = data[newIndex].data1;
         input2Ref.current.value = "";
