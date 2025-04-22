@@ -22,69 +22,86 @@ export default function Home() {
 
   const [udoCount, setUdoCount] = useState(data.length-1)
 
-
   useEffect(() => { 
     setUdoCount(data.length-1)
   }
   , [data])
 
+  console.log(data);
 
-  // console.log(data);
 
+  const data1 = document.querySelector('input[type="text"]');
 
   function handleData1() {
-    const data1 = document.querySelector('input[type="text"]').value;
-    if(data1===""){
+  const data0 = document.querySelector('input[type="text"]').value;
+    if(data0===""){
       alert("This field is required.")
     }else{
       setData(prevState => [...prevState, {
         id: prevState.length,
-        data1: data1
+        data1: data0
       }])
-      console.log("else data1",data1);
+      console.log("else data1",data0);
     }
-  console.log("fun data1",data1);
+  console.log("fun data1",data0);
   
   }
 
   function handleData2() {
-    const data2 = document.querySelectorAll('input[type="text"]')[1].value;
-    if(data2===""){
+  const data01 = document.querySelectorAll('input[type="text"]')[1];
+    if(data01===""){
       alert("This field is required.")
     }else{
       setData(prevState => [...prevState, {
         id: prevState.length,
-        data2: data2
+        data2: data01
       }])
-      console.log("else data2",data2);
+      console.log("else data2",data01);
     }
-  console.log("fun data2",data2);
+  console.log("fun data2",data01);
   
   }
 
-  // console.log("final",data[0]);
-  // let rdo=0
+  const data2 = document.querySelectorAll('input[type="text"]')[1];
 
-  const [rdoCount, setRdoCount] = useState(0)
-  let udo=data.length-1
+  // function handleUndo() {
+  //   console.log("us",udoCount);
+  //   setUdoCount(prevState => prevState - 1)
+  //   if(data[`${udoCount}`].data1){
+  //     data1.value = data[`${udoCount}`].data1
+  //     data2.value = ""
+  //   }else{
+  //     data2.value = data[`${udoCount}`].data2
+  //     data1.value = ""
+  //   }
+  //   console.log("ue",udoCount);
+  // }
 
   function handleUndo() {
-    console.log("us",udoCount);
-    const a = ("undo",data[`${udoCount}`].data1);
-    setUdoCount(prevState => prevState - 1)
-    setUndo(a)
-    // const filtered = data.filter(item =>
-    //     item.toLowerCase().includes(a.toLowerCase())
-    //   );
-    // console.log("filtered",filtered);
-    
-    console.log("ue",udoCount);
+    const newIndex = udoCount - 1;
+    if (newIndex >= 0) {
+      setUdoCount(newIndex);
+      const currentData = data[newIndex];
+      if (currentData.data1) {
+        input1Ref.current.value = currentData.data1;
+        input2Ref.current.value = "";
+      } else {
+        input2Ref.current.value = currentData.data2;
+        input1Ref.current.value = "";
+      }
+    }
   }
+
   function handleRedo() { 
     console.log("rs",udoCount); 
     setUdoCount(prevState => prevState + 1)
-    const a = ("undo",data[`${udoCount}`].data1);
-    setUndo(a)
+    if(data[`${udoCount}`].data1){
+      data1.value = data[`${udoCount}`].data1
+      data2.value = ""
+    }else{
+      data2.value = data[`${udoCount}`].data2
+      data1.value = ""
+    }
     console.log("re",udoCount); 
   }
 
