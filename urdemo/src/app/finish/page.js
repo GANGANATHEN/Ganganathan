@@ -13,6 +13,7 @@ export default function Udo() {
     setCurrentIndex(data.length);
   }, [data]);
 
+  
   const handleData1 = () => {
     const val = input1Ref.current.value.trim();
     if (val === "") {
