@@ -1,5 +1,5 @@
 "use client";
-import React from 'react'
+import React,{useState} from 'react'
 import Link from 'next/link'
 import { useRouter } from "next/navigation";
 
@@ -9,38 +9,45 @@ import { useRouter } from "next/navigation";
 // const MyContext = createContext(null);
 
 
+
 const Mainpage = ({ children }) => {
+      const [first, setFirst] = useState("hlo");
+      const [s, setSs] = useState("hello");
   
     const router = useRouter();
-    const data = {
-        name: "John Doe",
-        age: 30,
-      };
-    //   const dummy = JSON.stringify(data)
-    // const handleClick = () => {
-    //   const data = {
+    // const data = {
     //     name: "John Doe",
     //     age: 30,
     //   };
+    //   const dummy = JSON.stringify(data)
+    const handleClick = () => {
+      const data = {
+        name: "John Doe",
+        age: 30,
+      };
+
+      
   
-    //   router.push(`/about?name=${data.name}&age=${data.age}`);
-    // };
+      // router.push(`/about?name=${data.name}&age=${data.age}`);
+      router.push(`/about?name=${first}&age=${s}`);
+
+    };
   return (
     <div>
-    <Link
+    {/* <Link
       href={{
         pathname: '/about',
         query: {data1: JSON.stringify(data)},
       }}
     >
       About
-    </Link>
+    </Link> */}
     {/* <MyContext.Provider value={data}>
       {children}
     </MyContext.Provider> */}
-       {/* <button onClick={handleClick}>
+       <button onClick={handleClick}>
       Go to Other Page with Data
-    </button> */}
+    </button>
     </div>
   )
 }

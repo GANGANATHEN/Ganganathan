@@ -1,0 +1,51 @@
+Bash
+
+npm install zustand
+# or
+yarn add zustand
+JavaScript
+
+// store/store.js
+import { create } from 'zustand';
+
+export const useStore = create((set) => ({
+  sharedState: null,
+  setSharedState: (newState) => set({ sharedState: newState }),
+}));
+
+// pages/page1.js
+import { useStore } from '../store/store';
+
+function Page1() {
+  const { sharedState, setSharedState } = useStore();
+
+  const updateState = () => {
+    setSharedState('Data from Page 1 (Zustand)');
+  };
+
+  return (
+    <div>
+      <h1>Page 1</h1>
+      <p>Shared State: {sharedState}</p>
+      <button onClick={updateState}>Update Shared State</button>
+    </div>
+  );
+}
+
+export default Page1;
+
+// pages/page2.js
+import { useStore } from '../store/store';
+
+function Page2() {
+  const { sharedState } = useStore();
+
+  return (
+    <div>
+      <h1>Page 2</h1>
+      <p>Shared State in Page 2: {sharedState}</p>
+    </div>
+  );
+}
+
+export default Page2;

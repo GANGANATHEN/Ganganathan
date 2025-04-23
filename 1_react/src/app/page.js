@@ -15,14 +15,14 @@ import Image from "next/image";
 // import About from "./tasks/task6/About";
 // task 6 end
 // import Page from "./store/page"
-// import Mainpage from "./Approuter/page";
+import Mainpage from "./Approuter/page";
 //context-text-practice
 // import Homee from "./try/context_text/home"
 // import Contact from "./try/context_text/contact"
 // import Store from "./try/zustand/page1";
 // import Store1 from "./try/zustand/page2";
 // import Task7 from "./tasks/task7"
-import Urdo from "./demo/urdo";
+// import Urdo from "./demo/urdo";
 
 
 export default function Home() {
@@ -49,14 +49,14 @@ export default function Home() {
           </BrowserRouter>
           task 6 end */}
           {/* <Page /> */}
-          {/* <Mainpage /> */}
+          <Mainpage />
           {/* <Homee/> */}
           {/* <Contact/> */}
           {/* <Store />
           <Store1 /> */}
       </div>
         {/* <Task7 /> */}
-        <Urdo />
+        {/* <Urdo /> */}
     </div>
   );
 }

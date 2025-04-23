@@ -9,7 +9,7 @@ const About = () => {
   const nam = searchParams.get("name");
   console.log(nam);
   
-  // const age = searchParams.get("age");
+  const age = searchParams.get("age");
   return (
     // <div>
     //     {data && (
@@ -20,10 +20,11 @@ const About = () => {
     //     )}
     //   </div>
     <div>
+
     <h1>Other Page</h1>
     <p>Name: {nam}</p>
     {/* <p>{data.message}</p> */}
-    {/* <p>Age: {age}</p> */}
+    <p>Age: {age}</p>
   </div>
   )
 }
