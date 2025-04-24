@@ -451,7 +451,7 @@ const Heaven = () => {
             >
               <Image
                 className="w-1/2 mx-auto"
-                src="/assets/home/servicer.png"
+                src="/assets/home/home-d.png"
                 alt="servicer"
                 width={200}
                 height={200}
@@ -470,7 +470,7 @@ const Heaven = () => {
             <div className="w-1/2 bg-neutral-50 shadow-sm rounded-xl p-7 text-center">
               <Image
                 className="w-1/2 mx-auto"
-                src="/assets/home/servicer.png"
+                src="/assets/home/customers.png"
                 alt="servicer"
                 width={200}
                 height={200}
