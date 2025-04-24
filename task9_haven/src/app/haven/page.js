@@ -348,22 +348,163 @@ const Heaven = () => {
           </h1>
         </div>
 
-        <div className="mt-[5%] px-[5%] w-100% flex">
-          <Image
-            className="w-50% mx-auto"
-            src="/assets/home/servicer.png"
-            alt="servicer"
-            width={200}
-            height={200}
-          />
-          <div className="w-50%">
-            <h1>Understand <span className="block">borrower intent</span></h1>
-            <p>
-              Anticipate your borrowers’ future plans ahead of <span className="block">anyone else with
-              modules that help borrowers</span> build a plan for their homes and their
-              futures.
-            </p>
+        <div className="mt-[5%] px-[5%] ">
+          <div className="w-100% flex gap-7 items-center bg-purple-50 rounded-3xl p-20">
+            <Image
+              className="w-1/2 mx-auto"
+              src="/assets/home/servicer.png"
+              alt="servicer"
+              width={200}
+              height={200}
+            />
+            <div className="w-1/2">
+              <h1 className="text-teal-950 text-5xl font-bold">
+                Understand <span className="block">borrower intent</span>
+              </h1>
+              <p className="text-teal-950 py-4">
+                Anticipate your borrowers&apos; future plans ahead of{" "}
+                <span className="block">
+                  anyone else with modules that help borrowers
+                </span>{" "}
+                build a plan for their homes and their futures.
+              </p>
+            </div>
           </div>
+          <div className="w-100% flex gap-7 items-center bg-teal-50 rounded-3xl p-20">
+            <Image
+              className="w-1/2 mx-auto"
+              src="/assets/home/servicer.png"
+              alt="servicer"
+              width={200}
+              height={200}
+            />
+            <div className="w-1/2">
+              <h1 className="text-teal-950 text-5xl font-bold">
+                Educate<span className="block">homeowners to</span> drive
+                engagement
+              </h1>
+              <p className="text-teal-950 py-4">
+                Empower your customers to make sense of their{" "}
+                <span className="block">
+                  home finances, drawing them in outside of just
+                </span>{" "}
+                making payments.
+              </p>
+            </div>
+          </div>
+          <div className="w-100% flex gap-7 items-center bg-sky-50 rounded-3xl p-20">
+            <Image
+              className="w-1/2 mx-auto"
+              src="/assets/home/servicer.png"
+              alt="servicer"
+              width={200}
+              height={200}
+            />
+            <div className="w-1/2">
+              <h1 className="text-teal-950 text-5xl font-bold">
+                Present
+                <span className="block">personalized offers</span>
+              </h1>
+              <p className="text-teal-950 py-4">
+                Turn payment portals into a digital marketing
+                <span className="block">
+                  channel that presents personalized offers in the
+                </span>
+                right place at the right time.
+              </p>
+            </div>
+          </div>
+          <div className="w-100% flex gap-7 items-center bg-pink-50 rounded-3xl p-20">
+            <Image
+              className="w-1/2 mx-auto"
+              src="/assets/home/servicer.png"
+              alt="servicer"
+              width={200}
+              height={200}
+            />
+            <div className="w-1/2">
+              <h1 className="text-teal-950 text-5xl font-bold">
+                Fully white-labeled
+              </h1>
+              <p className="text-teal-950 py-4">
+                Advance your strategy, brand, and look and feel.
+                <span className="block">
+                  Have multiple brands? We support that too.
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-[5%] px-[5%]">
+        <div>
+          <h1 className="text-center text-[3rem] text-teal-950 font-bold">
+            We&apos;re on a mission to make life{" "}
+            <span className="block">simpler for homeowners</span>
+          </h1>
+          <div className="w-full flex mt-[5%] gap-7">
+            <div
+              className="w-1/2 text-center bg-neutral-50 shadow-sm rounded-xl p-7 text-centergroup relative cursor-pointer
+    transform transition-transform duration-600
+    hover:-translate-y-[10px] hover:opacity-70"
+            >
+              <Image
+                className="w-1/2 mx-auto"
+                src="/assets/home/servicer.png"
+                alt="servicer"
+                width={200}
+                height={200}
+              />
+              <h1 className="text-teal-950 text-3xl font-bold py-4">
+                bg-neutral-50
+              </h1>
+              <p className="text-[15px]">
+                Haven was founded on the premise that{" "}
+                <span className="block">
+                  homeownership shouldn&apos;t be complicated or
+                </span>{" "}
+                stressful. Meet our team.
+              </p>
+            </div>
+            <div className="w-1/2 bg-neutral-50 shadow-sm rounded-xl p-7 text-center">
+              <Image
+                className="w-1/2 mx-auto"
+                src="/assets/home/servicer.png"
+                alt="servicer"
+                width={200}
+                height={200}
+              />
+              <h1 className="text-teal-950 text-3xl font-bold py-4">
+                Hear from our customers
+              </h1>
+              <p className="text-[15px]">
+                We work with mortgage companies, helping{" "}
+                <span className="block">
+                  them connect with their customers more
+                </span>{" "}
+                deeply than ever before.
+              </p>
+            </div>
+          </div>
+          <div className="absolute w-full flex mt-[2%] gap-7 bg-neutral-50 p-5 shadow-sm rounded-2xl">
+            <div className="w-1/2 pl-[7%]">
+              <h1 className="text-3xl text-teal-950 font-bold">
+                See our latest insights
+              </h1>
+              <p className="text-teal-950 text-xl py-4">
+                We&apos;re busy creating content to help you <span className="block">implement our technology
+                with clarity — and to</span> good effect.
+              </p>
+            </div>
+          </div>
+          <Image
+              className="relative bottom-[-50%] right-[-15%] mx-auto"
+              src="/assets/home/Phone.png"
+              alt="servicer"
+              width={200}
+              height={200}
+            />
         </div>
       </section>
       <div className="mt-[10%]">
