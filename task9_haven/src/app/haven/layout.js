@@ -7,8 +7,8 @@ const Heaven = ({ children }) => {
   const router = useRouter();
   return (
     <div>
-      <div className="z-2 fixed w-full flex justify-between items-center px-10 py-6 bg-transparent">
-        <div className="flex gap-2 items-center text-green-800 text-[20px]">
+      <div className="z-1 fixed w-full flex justify-between items-center px-10 py-6 bg-transparent">
+        <div className="flex gap-2 items-center text-emerald-700 text-[20px]">
           <Image
             src="/assets/home/h-logo.png"
             alt="homeimg"
@@ -18,8 +18,8 @@ const Heaven = ({ children }) => {
           <h1 className="font-semibold text-2xl">Haven</h1>
         </div>
         <div className="flex space-x-6">
-          <button>How it Works</button>
-          <button className="flex items-center gap-1">
+          <button className="text-emerald-950 hover:text-emerald-700 cursor-pointer">How it Works</button>
+          <button className="flex items-center gap-1 text-emerald-950 hover:text-emerald-700 cursor-pointer">
             Use Cases
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ const Heaven = ({ children }) => {
               />
             </svg>
           </button>
-          <button className="flex items-center gap-1">
+          <button className="flex items-center gap-1 text-emerald-950 hover:text-emerald-700 cursor-pointer">
             Company
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +55,7 @@ const Heaven = ({ children }) => {
           </button>
         </div>
         <button
-          className="bg-green-800 px-4 py-2 rounded-lg hover:bg-green-950 text-white"
+          className="bg-emerald-700 hover:bg-emerald-950 px-4 py-2 rounded-lg text-white"
           onClick={() => router.push("./haven/getdemo")}
         >
           Get a Demo
