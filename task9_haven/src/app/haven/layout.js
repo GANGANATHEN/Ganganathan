@@ -18,7 +18,9 @@ const Heaven = ({ children }) => {
           <h1 className="font-semibold text-2xl">Haven</h1>
         </div>
         <div className="flex space-x-6">
-          <button className="text-emerald-950 hover:text-emerald-700 cursor-pointer">How it Works</button>
+          <button className="text-emerald-950 hover:text-emerald-700 cursor-pointer">
+            How it Works
+          </button>
           <button className="flex items-center gap-1 text-emerald-950 hover:text-emerald-700 cursor-pointer">
             Use Cases
             <svg
@@ -53,16 +55,19 @@ const Heaven = ({ children }) => {
               />
             </svg>
           </button>
+  
         </div>
         <button
-          className="bg-emerald-700 hover:bg-emerald-950 px-4 py-2 rounded-lg text-white"
+          className="bg-emerald-700 hover:bg-emerald-950 px-4 py-2 rounded-lg text-white cursor-pointer"
           onClick={() => router.push("./haven/getdemo")}
         >
           Get a Demo
         </button>
+        
       </div>
 
       {/* space below the fixed nav */}
+
       <div>{children}</div>
     </div>
   );
