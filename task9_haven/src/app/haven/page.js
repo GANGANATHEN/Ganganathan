@@ -12,7 +12,7 @@ const Heaven = () => {
   return (
     <div className="z-2">
       <section>
-        <div className="absolute z-10 text-center top-[24%] w-full ">
+        <div className="absolute z-2 text-center top-[24%] w-full ">
           <p className="text-xl font-bold text-emerald-700">Meet Haven</p>
           <h1 className="text-[70px] font-bold text-emerald-950 font-serif">
             Get the most out of <span className="block mt-[-3%]">MSR</span>
@@ -357,12 +357,12 @@ const Heaven = () => {
             for home finances
           </h1>
         </div>
-
-        <div className="mt-[5%] px-[5%] ">
-          <div className="w-100% flex gap-7 items-center bg-purple-50 rounded-3xl p-20">
+        
+        <div className="relative mt-[5%] px-[5%] ">
+          <div className="sticky top-0 h-screen flex gap-7 items-center justify-center bg-purple-50 rounded-3xl p-20">
             <Image
               className="w-1/2 mx-auto"
-              src="/assets/home/servicer.png"
+              src="/assets/stiky/1.png"
               alt="servicer"
               width={200}
               height={200}
@@ -380,10 +380,10 @@ const Heaven = () => {
               </p>
             </div>
           </div>
-          <div className="w-100% flex gap-7 items-center bg-teal-50 rounded-3xl p-20">
+          <div className="sticky top-0 h-screen flex gap-7 items-center justify-center bg-teal-50 rounded-3xl p-20">
             <Image
               className="w-1/2 mx-auto"
-              src="/assets/home/servicer.png"
+              src="/assets/stiky/2.png"
               alt="servicer"
               width={200}
               height={200}
@@ -402,10 +402,10 @@ const Heaven = () => {
               </p>
             </div>
           </div>
-          <div className="w-100% flex gap-7 items-center bg-sky-50 rounded-3xl p-20">
+          <div className="sticky top-0 h-screen flex gap-7 items-center justify-center bg-sky-50 rounded-3xl p-20">
             <Image
               className="w-1/2 mx-auto"
-              src="/assets/home/servicer.png"
+              src="/assets/stiky/3.png"
               alt="servicer"
               width={200}
               height={200}
@@ -424,10 +424,10 @@ const Heaven = () => {
               </p>
             </div>
           </div>
-          <div className="w-100% flex gap-7 items-center bg-pink-50 rounded-3xl p-20">
+          <div className="sticky top-0 h-screen flex gap-7 items-center justify-center bg-pink-50 rounded-3xl p-20">
             <Image
               className="w-1/2 mx-auto"
-              src="/assets/home/servicer.png"
+              src="/assets/stiky/4.png"
               alt="servicer"
               width={200}
               height={200}
@@ -445,6 +445,7 @@ const Heaven = () => {
             </div>
           </div>
         </div>
+
       </section>
 
       <section>
@@ -712,65 +713,6 @@ const Heaven = () => {
             </ul>
 
             <p>© 2025 Haven. All Rights Reserved.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-pink-100 mt-[5%] py-[5%]">
-        <div className="shadow-sm bg-white w-[30%] mx-auto rounded-3xl p-3">
-          <div className="flex gap-3">
-            <div>
-            <Image
-              className="mx-auto"
-              src="/assets/home/servicer.png"
-              alt="servicer"
-              width={150}
-              height={150}
-            />
-            </div>
-            <div>
-              <h1>For Servicers</h1>
-              <p>
-                Improve yields on your MSR with technology that enables your
-                recapture and cross-sell strategy
-              </p>
-            </div>
-          </div>
-          <div className="flex gap-3">
-          <div>
-            <Image
-              className="mx-auto"
-              src="/assets/home/subservicer.png"
-              alt="servicer"
-              width={150}
-              height={150}
-            />
-          </div>
-            <div>
-              <h1>For Subservicers</h1>
-              <p>
-                Win more servicing deals by offering your clients best-in-class
-                recapture functionality.
-              </p>
-            </div>
-          </div>
-          <div className="flex gap-3">
-            <div>
-            <Image
-              className="mx-auto"
-              src="/assets/home/lender.png"
-              alt="servicer"
-              width={150}
-              height={150}
-            />
-            </div>
-            <div>
-              <h1>For Lenders</h1>
-              <p>
-                Ensure your LOs focus to recapture the highest-intent leads from
-                your portfolio.
-              </p>
-            </div>
           </div>
         </div>
       </section>
