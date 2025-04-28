@@ -64,3 +64,25 @@ body {
 .fadeInUp-animation {
   animation: 1.5s fadeInUp;
 }
+
+.animated-text {
+  animation: fade-in 2s ease-in-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.my-element {
+  animation: fade-in 1s ease-out 0.5s; /* Delay of 0.5s before 1s animation */
+}
