@@ -30,7 +30,7 @@ body {
 }
 
 @starting-style {
-  opacity: 0; 
+  opacity: 0;
 }
 
 .animaa {
@@ -63,10 +63,15 @@ body {
 
 .fadeInUp-animation {
   animation: 1.5s fadeInUp;
+  /* animation-play-state: paused; */
+  /* animation-timeline: scroll(block nearest); */
+  /* animation-delay: calc(var(--scroll) * -3s); */
 }
 
 .animated-text {
   animation: fade-in 2s ease-in-out;
+  /* animation-play-state: paused; */
+  /* animation-delay: calc(var(--scroll) * 2.5s); */
 }
 
 @keyframes fade-in {
