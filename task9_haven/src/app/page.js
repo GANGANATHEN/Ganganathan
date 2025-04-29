@@ -52,16 +52,16 @@ export default function Home() {
     };
   }, []);
 
-  window.addEventListener(
-    "scroll",
-    () => {
-      document.body.style.setProperty(
-        "--scroll",
-        window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
-      );
-    },
-    false
-  );
+  // window.addEventListener(
+  //   "scroll",
+  //   () => {
+  //     document.body.style.setProperty(
+  //       "--scroll",
+  //       window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
+  //     );
+  //   },
+  //   false
+  // );
 
   return (
     <div>
@@ -262,7 +262,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="z-2 text-center top-[160px] w-full"
+            className="z-2 text-center mt-[60px] w-full"
           >
             <p className="text-xl font-bold text-emerald-700">Meet Haven</p>
             <h1 className="text-[70px] font-bold text-emerald-950 font-serif">
