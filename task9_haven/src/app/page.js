@@ -10,33 +10,6 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 export default function Home() {
   const [useCase, setUseCase] = useState(true);
   const [company, setCompany] = useState(true);
-  const [showAlert, setShowAlert] = useState(false);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (sectionRef.current) {
-        const sectionTop = sectionRef.current.offsetTop;
-        const scrollY = window.scrollY;
-        const windowHeight = window.innerHeight;
-
-        if (scrollY > sectionTop - windowHeight + 100) {
-          setShowAlert(true);
-          window.removeEventListener('scroll', handleScroll);
-          setTimeout(() => {
-            console.log("Section is in view");     
-          }, 30);
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
 
   const router = useRouter();
 
@@ -56,16 +29,32 @@ export default function Home() {
       setCompany(true);
     }
 
+    const handleScroll = () => {
+      const sections = document.querySelectorAll('section');
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+          const value = section.getAttribute('section-value');
+          if (value) {
+            console.log("Section value: ", value);
+          }
+        }
+      });
+    };
     document.addEventListener("mousedown", handleClick);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       document.removeEventListener("mousedown", handleClick);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
+
   return (
     <div>
-      <section ref={sectionRef}>
+      <section section-value="1">
         <div className="z-1 relative w-full">
           <div className="z-1 w-full flex justify-between items-center px-10 py-6 bg-transparent">
             <div className="flex gap-2 items-center text-emerald-700 text-[20px] cursor-pointer">
@@ -487,7 +476,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section ref={sectionRef}>
+      <section section-value="2">
         <div className="mt-[100%] px-[5%]">
           <div className="fadeInUp-animation flex justify-between text-center w-full">
             <h1 className="text-emerald-700 text-[3rem] font-bold w-1/3">
@@ -605,7 +594,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section section-value="3">
         <div className="mt-[10%] px-[5%]">
           <h1 className="text-center text-[3rem] text-teal-950 font-bold leading-none">
             Generate value with your
@@ -703,7 +692,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section section-value="4">
         <div className="mt-[5%] px-[5%]">
           <h1 className="text-center text-[3rem] text-teal-950 font-bold">
             We&apos;re on a mission to make life{" "}
@@ -777,7 +766,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section section-value="5">
         <div className="w-[90%] mt-[15%] text-white mx-[5%] flex gap-7 bg-teal-800 shadow-sm items-center rounded-3xl p-20">
           <div className="w-[50%]">
             <p className="text-teal-300">Integration</p>
@@ -809,7 +798,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-teal-900 mt-[10%] py-[5%]">
+      <section section-value="6" className="bg-teal-900 mt-[10%] py-[5%]">
         <div className="p-[5%] w-[90%] mx-[5%] border-1 border-teal-700 text-white flex flex-col gap-7 items-center justify-center rounded-3xl">
           <h1 className="text-[3rem] font-bold">
             Unlock a new chapter — make{" "}
