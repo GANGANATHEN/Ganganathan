@@ -31,6 +31,12 @@ body {
 .secondary{
   background:#0E1421;
 }
+.sec-bg{
+  background: #162850;
+}
 .text-secondery{
   color:#676B73
+}
+.img-bg{
+  background: #742BEC;
 }
