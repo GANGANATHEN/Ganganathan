@@ -906,7 +906,11 @@ export default function Home() {
                 <li>
                   <a className="opacity-30">Resources</a>
                 </li>
-                <li>
+                <li
+                
+                
+                
+                >
                   <a className="opacity-30">Blog &nbsp;&nbsp;</a>
                   <span className="bg-orange-300 text-teal-950 text-[10px] p-1 rounded-lg">
                     Coming soon
