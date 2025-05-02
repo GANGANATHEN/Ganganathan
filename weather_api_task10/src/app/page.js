@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -8,14 +9,19 @@ export default function Home() {
   const [weatherData, setWeatherData] = useState();
 
   function handleSearch() {
+    const input1 = document.querySelector("input");
     console.log(city);
     setCityName(city);
     console.log("city name", cityName);
+    setCity("");
+    input1.value = "";
   }
   function handleDemo() {
     console.log(weatherData[0]);
   }
-
+  function handleTheme() {
+    console.log("yes i'm handleTheme");
+  }
   useEffect(() => {
     const fetchWeatherData = async (city) => {
       try {
@@ -32,74 +38,155 @@ export default function Home() {
   }, [cityName]);
 
   return (
-    <div className="w-full flex p-7 gap-4 text-white">
-      <div className="bg-col w-[7%] rounded-3xl p-5 shadow-sm">
-        <div className="flex flex-col justify-center  items-center text-center gap-2">
+    <section className="w-full flex p-7 gap-4 text-white">
+      {/* side bar */}
+      <div className="bg-col flex flex-col rounded-4xl shadow-sm ">
+        <div className="flex flex-col  p-7  items-center text-center gap-2">
           <Image
-            src="/assets/main/bijli.svg"
-            width={25}
-            height={25}
+            className="mt-6"
+            src="/assets/main/menu.svg"
+            width={18}
+            height={12}
             alt="bijli.svg"
           />
-          <p className="text-xs">SkySense</p>
         </div>
 
-        <div className="flex flex-col items-center gap-y-5 mt-[60%]">
-          <Image src="/assets/main/1.svg" width={25} height={25} alt="1.svg" />
-          <Image src="/assets/main/2.svg" width={25} height={25} alt="2.svg" />
-          <Image src="/assets/main/3.svg" width={25} height={25} alt="3.svg" />
-          <Image src="/assets/main/4.svg" width={25} height={25} alt="4.svg" />
-          <Image src="/assets/main/5.svg" width={25} height={25} alt="5.svg" />
+        <div className="icon-col border-gradient border-gradient-gray only-top pt-7 flex flex-col items-center gap-y-7 ">
+          <Link href="/">
+            <Image
+              clas
+              src="/assets/main/1.svg"
+              width={20}
+              height={20}
+              alt="1.svg"
+            />
+          </Link>
+          <Link href="/">
+            <Image
+              src="/assets/main/2.svg"
+              width={20}
+              height={20}
+              alt="2.svg"
+            />
+          </Link>
+          <Link href="/">
+            <Image
+              src="/assets/main/3.svg"
+              width={20}
+              height={20}
+              alt="3.svg"
+            />
+          </Link>
+          <Link href="/">
+            <Image
+              src="/assets/main/4.svg"
+              width={20}
+              height={20}
+              alt="5.svg"
+            />
+          </Link>
+          <Link href="/">
+            <Image
+              src="/assets/main/5.svg"
+              width={20}
+              height={20}
+              alt="5.svg"
+            />
+          </Link>
         </div>
 
-        <div className="flex flex-col gap-y-5 mt-[230%] items-center">
-          <Image
-            src="/assets/main/quitw.svg"
-            width={25}
-            height={25}
-            alt="quitw.svg"
-          />
-          <Image
-            src="/assets/main/moon.png"
-            width={25}
-            height={25}
-            alt="moon.png"
-          />
+        <div className="mt-[300%] p-7 border-gradient border-gradient-gray only-top flex flex-col items-center">
+          <Link href="/">
+            <Image
+              className="mb-6"
+              src="/assets/main/6.svg"
+              width={20}
+              height={20}
+              alt="5.svg"
+            />
+          </Link>
         </div>
       </div>
 
-      <div className="w-[93%]">
-        <div className="relative flex justify-between items-center">
-          <input
-            type="text"
-            className=" outline-none bg-col py-3 px-[7%] rounded-3xl shadow-sm w-[50%] text-secondery"
-            placeholder="Search City..."
-          />
-          <Image
-            className="absolute top[10%] left-[2%]"
-            src="/assets/user/search.svg"
-            width={25}
-            height={25}
-            alt="up.svg"
-          />
-          <div className="w-[30%] flex justify-between  bg-col rounded-3xl py-3 px-4">
-            <div className="flex justify-between gap-2">
-              <Image
-                className="img-bg rounded-4xl p-1"
-                src="/assets/user/up.svg"
-                width={25}
-                height={25}
-                alt="up.svg"
-              />
-              <p className="text-[14px]">username</p>
-            </div>
-
-            <Image
-              src="/assets/user/d-arrow.svg"
-              width={15}
-              height={15}
-              alt="up.svg"
+      {/* main contents */}
+      <div className="w-[90%]">
+        {/* main top-bar contents */}
+        <div className="flex justify-between items-center">
+         {/* user name  */}
+          <div className="w-[50%]">
+            <h1 className="text-[18px]">
+              Hi, Kajal{" "}
+              <span className="block text-[24px] font-semibold">
+                Good Morning
+              </span>
+            </h1>
+          </div>
+          {/* search and user profile  */}
+          <div className="flex justify-between gap-x-7 items-center relative">
+            {/* search bar  */}
+            <input
+              type="text"
+              name={city}
+              className=" outline-none bg-col py-3 pl-[15%] rounded-3xl shadow-sm text-secondery"
+              placeholder="Search City..."
+              onChange={(e) => setCity(e.target.value)}
             />
+            <Image
+              className="absolute bottom-3 left-[5%] cursor-pointer active:text-white"
+              src="/assets/user/search.svg"
+              width={25}
+              height={25}
+              alt="up.svg"
+              onClick={() => handleSearch()}
+            />
+
+            {/* theme change  */}
+
+            <label
+              className="inline-flex items-center cursor-pointer"
+              onClick={() => handleTheme()}
+            >
+              <input type="checkbox" value="" class="sr-only peer" />
+
+              <div className="relative w-20 h-10 bg-red-100 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-0.5 after:start-[7px] after:bg-white  after:border after:rounded-full after:h-9 after:w-9 after:transition-all dark:border-gray-600 peer-checked:bg-blue-100 dark:peer-checked:bg-blue-100">
+                <Image
+                  className="absolute bottom-[25%] left-[60%]"
+                  src="/assets/user/moon.svg"
+                  width={20}
+                  height={20}
+                  alt="up.svg"
+                  onClick={() => handleSearch()}
+                />
+                <Image
+                  className="absolute bottom-[25%] left-[20%]"
+                  src="/assets/user/sun.svg"
+                  width={20}
+                  height={20}
+                  alt="up.svg"
+                  onClick={() => handleSearch()}
+                />
+              </div>
+            </label>
+
+              {/* user profile */}
+
+            <div className="flex justify-between gap-x-5">
+              <Image
+                src="/assets/user/profile.svg"
+                width={55}
+                height={55}
+                alt="up.svg"
+                onClick={() => handleSearch()}
+              />
+              <Image
+              className="cursor-pointer"
+                src="/assets/user/arrow.svg"
+                width={15}
+                height={15}
+                alt="up.svg"
+                onClick={() => handleSearch()}
+              />
+            </div>
           </div>
         </div>
         <div className="flex justify-between w-fulln gap-7 mt-5">
@@ -107,13 +194,13 @@ export default function Home() {
             <div className="w-full flex justify-between ">
               <div className="">
                 <div className="flex p-2 rounded-2xl justify-start img-bg">
-                <Image
-                  src="/assets/user/location.svg"
-                  width={15}
-                  height={15}
-                  alt="up.svg"
-                />
-                <p>india</p>
+                  <Image
+                    src="/assets/user/location.svg"
+                    width={15}
+                    height={15}
+                    alt="up.svg"
+                  />
+                  <p>india</p>
                 </div>
 
                 <h2 className="text-[40px]">Monday</h2>
@@ -143,6 +230,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
