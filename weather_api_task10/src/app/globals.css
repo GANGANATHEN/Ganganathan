@@ -30,7 +30,7 @@ body {
   background: #1E1E1E;
 }
 .secondary{
-  background:#0E1421;
+  background: #272727;
 }
 .icon-col{
   color: #5E5E5E;
@@ -59,9 +59,21 @@ body {
   border-right: 0;
   border-bottom: 0;
 }
+.only-bottom {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
 /* border color end */
 
 /* button color start */
 .bln-toggle{
   background: #262626;
 }
+/* button color endt */
+
+/* text color start */
+.t-col{
+  color: #B9B9B9;
+}
+/* text color end */

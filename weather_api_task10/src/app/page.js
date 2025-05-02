@@ -54,7 +54,6 @@ export default function Home() {
         <div className="icon-col border-gradient border-gradient-gray only-top pt-7 flex flex-col items-center gap-y-7 ">
           <Link href="/">
             <Image
-              clas
               src="/assets/main/1.svg"
               width={20}
               height={20}
@@ -112,7 +111,7 @@ export default function Home() {
       <div className="w-[90%]">
         {/* main top-bar contents */}
         <div className="flex justify-between items-center">
-         {/* user name  */}
+          {/* user name  */}
           <div className="w-[50%]">
             <h1 className="text-[18px]">
               Hi, Kajal{" "}
@@ -146,7 +145,7 @@ export default function Home() {
               className="inline-flex items-center cursor-pointer"
               onClick={() => handleTheme()}
             >
-              <input type="checkbox" value="" class="sr-only peer" />
+              <input type="checkbox" value="" className="sr-only peer" />
 
               <div className="relative w-20 h-10 bg-red-100 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-0.5 after:start-[7px] after:bg-white  after:border after:rounded-full after:h-9 after:w-9 after:transition-all dark:border-gray-600 peer-checked:bg-blue-100 dark:peer-checked:bg-blue-100">
                 <Image
@@ -168,7 +167,7 @@ export default function Home() {
               </div>
             </label>
 
-              {/* user profile */}
+            {/* user profile */}
 
             <div className="flex justify-between gap-x-5">
               <Image
@@ -179,7 +178,7 @@ export default function Home() {
                 onClick={() => handleSearch()}
               />
               <Image
-              className="cursor-pointer"
+                className="cursor-pointer"
                 src="/assets/user/arrow.svg"
                 width={15}
                 height={15}
@@ -189,43 +188,297 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between w-fulln gap-7 mt-5">
-          <div className="w-1/2 bg-col p-4 rounded-3xl">
-            <div className="w-full flex justify-between ">
-              <div className="">
-                <div className="flex p-2 rounded-2xl justify-start img-bg">
+
+        {/* main weather data  */}
+        <div className="w-full flex gap-x-6">
+          <div className="w-[40%]  flex flex-col gap-y-4 mt-4">
+            {/* show location and cloud  */}
+            <div className="bg-col rounded-3xl shadow-sm p-5 ">
+              <div className="flex justify-between text-[18px]">
+                <div className="flex gap-x-3 items-center">
                   <Image
                     src="/assets/user/location.svg"
-                    width={15}
-                    height={15}
-                    alt="up.svg"
+                    width={20}
+                    height={20}
+                    alt="location"
                   />
-                  <p>india</p>
+                  <span>Dhaka,</span>
+                  <span>Bangladesh</span>
                 </div>
-
-                <h2 className="text-[40px]">Monday</h2>
-                <p className="text-[16px]">24 Dec, 2023</p>
-
-                <h1 className="text-[64px]">26 * C</h1>
-                <p>High: 27 Low: 10</p>
+                <div className="flex gap-x-3 items-center">
+                  <p>* C</p>
+                  <Image
+                    className="cursor-pointer"
+                    src="/assets/user/w-arrow.svg"
+                    width={20}
+                    height={20}
+                    alt="white arrow"
+                  />
+                </div>
               </div>
-              <div className="w-[50%]">2</div>
+
+              <div className="flex justify-between mt-4">
+                <div className="text-[36px]">
+                  <h1>
+                    Sunday{" "}
+                    <span className="block text-[16px]">04 Aug,2024</span>
+                  </h1>
+                </div>
+                <div className="flex items-center text-center justify-center">
+                  <Image
+                    src="/assets/user/Rain cloud.svg"
+                    width={100}
+                    height={100}
+                    alt="Rain Cloud"
+                  />
+                </div>
+                <div className="flex flex-col gap-y-7">
+                  <h1 className="text-[40px]">
+                    28°C <span className="block t-col text-[24px]">/24°C</span>
+                  </h1>
+                  <p className="text-[20px]">
+                    Heavy Rain{" "}
+                    <span className="block text-[16px] t-col">
+                      Feels like 31°
+                    </span>
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="w-1/2 bg-col">
-              <div className="w-full flex justify-between">
-                <div className="w-[80%]">1</div>
-                <div className="w-[20%]">2</div>
+            {/* other Countries  */}
+            <div className="bg-col rounded-3xl shadow-sm p-5 flex flex-col gap-y-4">
+              <div className="flex justify-between items-center">
+                <p className="text-[24px]">Others Countries</p>
+                <div className="text-[16px] flex gap-x-4 items-center">
+                  <p>See All</p>
+                  <Image
+                    className="cursor-pointer"
+                    src="/assets/user/w-arrow.svg"
+                    width={16}
+                    height={16}
+                    alt="white arrow"
+                  />
+                </div>
+              </div>
+              <div className="secondary p-3 rounded-2xl flex justify-between">
+                <div>
+                  <p className="t-col text-[14px]">Australia</p>
+                  <h1 className="text-[24px]">Canberra</h1>
+                  <p className="text-[14px]">Sunny</p>
+                </div>
+                <div>
+                  <Image
+                    src="/assets/user/o-sun.svg"
+                    width={70}
+                    height={70}
+                    alt="original sun"
+                  />
+                </div>
+                <div>
+                  <h1 className="text-[24px]">
+                    32° <span className="t-col text-[18px]">/24°</span>{" "}
+                  </h1>
+                </div>
+              </div>
+              <div className="secondary p-3 rounded-2xl flex justify-between">
+                <div>
+                  <p className="t-col text-[14px] ">Japan</p>
+                  <h1 className="text-[24px]">Tokyo</h1>
+                  <p className="text-[14px] ">Mostly Sunny</p>
+                </div>
+                <div>
+                  <Image
+                    src="/assets/user/sun-cloud.svg"
+                    width={70}
+                    height={70}
+                    alt="sun with cloud"
+                  />
+                </div>
+                <div>
+                  <h1 className="text-[24px]">
+                    30°<span className="t-col text-[18px]">/19°</span>{" "}
+                  </h1>
+                </div>
               </div>
             </div>
           </div>
-          <div className="w-1/2 mt-3 flex flex-col gap-y-2 ">
-            <div className="sec-bg">div 3</div>
-            <div>div 4</div>
-            <div className="bg-col flex">
-              <div className="">div 1</div>
-              <div>div 2</div>
-              <div>div 3</div>
-              <div>div 4</div>
+          <div className="w-[60%] flex flex-col gap-y-4 mt-4">
+            <div className="w-full bg-col p-5 rounded-3xl mt-4">
+              <h1>Today’s Highlight</h1>
+              <div className="w-full grid grid-cols-4 gap-4 mt-3">
+                <div className="secondary p-3 rounded-2xl flex flex-col items-end">
+                  <div className="flex gap-x-4 ">
+                    <Image
+                      src="/assets/user/wind.svg"
+                      width={20}
+                      height={20}
+                      alt="wind"
+                    />
+                    <p className="text-[16px]">Wind Status</p>
+                  </div>
+                  <p className="text-[24px]">
+                    7.90 <span className="text-[14px]">km/h</span>
+                  </p>
+                  <p className="text-[14px]">9:00 AM</p>
+                </div>
+                <div className="secondary p-3 rounded-2xl flex flex-col items-end">
+                  <div className="flex gap-x-4 ">
+                    <Image
+                      src="/assets/user/water.svg"
+                      width={20}
+                      height={20}
+                      alt="wind"
+                    />
+                    <p className="text-[16px]">Humidity</p>
+                  </div>
+                  <p className="text-[24px]">
+                    85 <span className="text-[14px]">%</span>
+                  </p>
+                  <p className="text-[14px]">Humidity is good</p>
+                </div>
+                <div className="col-span-2 secondary p-3 rounded-2xl gap-x-7 flex justify-between items-center">
+                  <Image
+                    src="/assets/user/sunrise.svg"
+                    width={70}
+                    height={70}
+                    alt="wind"
+                  />
+                  <p className="text-[16px]">
+                    Sunrise <span className="block text-[24px]">4:50 AM</span>
+                  </p>
+                </div>
+                <div className="secondary p-3 rounded-2xl flex flex-col items-end">
+                  <div className="flex gap-x-4 ">
+                    <Image
+                      src="/assets/user/uv.svg"
+                      width={20}
+                      height={20}
+                      alt="wind"
+                    />
+                    <p className="text-[16px]">UV Index</p>
+                  </div>
+                  <p className="text-[24px]">
+                    4 <span className="text-[14px]">UV</span>
+                  </p>
+                  <p className="text-[14px]">Moderate UV</p>
+                </div>
+                <div className="secondary p-3 rounded-2xl flex flex-col items-end">
+                  <div className="flex gap-x-4 ">
+                    <Image
+                      src="/assets/user/eye.svg"
+                      width={20}
+                      height={20}
+                      alt="wind"
+                    />
+                    <p className="text-[16px]">Visibility</p>
+                  </div>
+                  <p className="text-[24px]">
+                    5 <span className="text-[14px]">km</span>
+                  </p>
+                  <p className="text-[14px]">9:00 AM</p>
+                </div>
+                <div className="col-span-2 secondary p-3 rounded-2xl flex justify-between items-center">
+                  <Image
+                    src="/assets/user/sunset.svg"
+                    width={70}
+                    height={70}
+                    alt="wind"
+                  />
+                  <p className="text-[16px]">
+                    Sunset <span className="block text-[24px]">6:45 PM</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* 10 day forecast  */}
+            <div className="bg-col rounded-3xl p-5">
+              <h1 className="text-[24px]">10 Day Forecast</h1>
+              <div className="flex gap-x-5">
+                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
+                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
+                    Today
+                  </p>
+                  <Image
+                    src="/assets/user/Rain cloud.svg"
+                    width={50}
+                    height={50}
+                    alt="Rain cloud"
+                  />
+                  <p className="text-[18px]">28°C</p>
+                </div>
+                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
+                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
+                  Mon
+                  </p>
+                  <Image
+                    src="/assets/user/sun-cloud.svg"
+                    width={50}
+                    height={50}
+                    alt="sun with cloud"
+                  />
+                  <p className="text-[18px]">28°C</p>
+                </div>
+                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
+                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
+                    Tue
+                  </p>
+                  <Image
+                    src="/assets/user/Rain cloud.svg"
+                    width={50}
+                    height={50}
+                    alt="Rain cloud"
+                  />
+                  <p className="text-[18px]">28°C</p>
+                </div>
+                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
+                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
+                    Wed
+                  </p>
+                  <Image
+                    src="/assets/user/Rain cloud.svg"
+                    width={50}
+                    height={50}
+                    alt="Rain cloud"
+                  />
+                  <p className="text-[18px]">28°C</p>
+                </div>
+                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
+                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
+                    Thu
+                  </p>
+                  <Image
+                    src="/assets/user/Rain cloud.svg"
+                    width={50}
+                    height={50}
+                    alt="Rain cloud"
+                  />
+                  <p className="text-[18px]">28°C</p>
+                </div>
+                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
+                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
+                    Fri
+                  </p>
+                  <Image
+                    src="/assets/user/Rain cloud.svg"
+                    width={50}
+                    height={50}
+                    alt="Rain cloud"
+                  />
+                  <p className="text-[18px]">28°C</p>
+                </div>
+                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
+                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
+                    Sat
+                  </p>
+                  <Image
+                    src="/assets/user/Rain cloud.svg"
+                    width={50}
+                    height={50}
+                    alt="Rain cloud"
+                  />
+                  <p className="text-[18px]">28°C</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
