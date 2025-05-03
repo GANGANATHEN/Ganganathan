@@ -5,8 +5,10 @@ import Link from "next/link";
 
 export default function Home() {
   const [city, setCity] = useState("");
-  const [cityName, setCityName] = useState("");
+  const [cityName, setCityName] = useState("Thousand Lights");
   const [weatherData, setWeatherData] = useState();
+
+  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
   function handleSearch() {
     const input1 = document.querySelector("input");
@@ -17,15 +19,16 @@ export default function Home() {
     input1.value = "";
   }
   function handleDemo() {
-    console.log(weatherData[0]);
+    console.log("current cityName", weatherData.location.name);
+    console.log("feature",new Date(1746256500).getUTCDay());
   }
   function handleTheme() {
     console.log("yes i'm handleTheme");
   }
   useEffect(() => {
-    const fetchWeatherData = async (city) => {
+    const fetchWeatherData = async () => {
       try {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=6b0db3384a74beb18811937675047b4c`;
+        const url = `https://api.weatherapi.com/v1/forecast.json?key=fbd09534ac13463aad5115428250205&q=${cityName}&days=5&aqi=no&alerts=no`;
         const response = await fetch(url);
         const data = await response.json();
         setWeatherData(data);
@@ -109,6 +112,12 @@ export default function Home() {
 
       {/* main contents */}
       <div className="w-[90%]">
+        <button
+          className="z-1 border-1 bg-red-700"
+          onClick={() => handleDemo()}
+        >
+          demo
+        </button>
         {/* main top-bar contents */}
         <div className="flex justify-between items-center">
           {/* user name  */}
@@ -202,8 +211,12 @@ export default function Home() {
                     height={20}
                     alt="location"
                   />
-                  <span>Dhaka,</span>
-                  <span>Bangladesh</span>
+                  <span>
+                    {weatherData ? `${weatherData.location.name},` : ""}
+                  </span>
+                  <span>
+                    {weatherData ? `${weatherData.location.country}` : ""}
+                  </span>
                 </div>
                 <div className="flex gap-x-3 items-center">
                   <p>* C</p>
@@ -220,8 +233,14 @@ export default function Home() {
               <div className="flex justify-between mt-4">
                 <div className="text-[36px]">
                   <h1>
-                    Sunday{" "}
-                    <span className="block text-[16px]">04 Aug,2024</span>
+                  {weatherData
+                        ? weekday[`${new Date(weatherData.forecast.forecastday[0].date).getUTCDay()}`]
+                        : "04 Aug,2024"}{" "}
+                    <span className="block text-[16px]">
+                      {weatherData
+                        ? `${weatherData.forecast.forecastday[0].date}`
+                        : "04 Aug,2024"}{" "}
+                    </span>
                   </h1>
                 </div>
                 <div className="flex items-center text-center justify-center">
@@ -234,12 +253,21 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col gap-y-7">
                   <h1 className="text-[40px]">
-                    28°C <span className="block t-col text-[24px]">/24°C</span>
+                    {weatherData ? `${weatherData.current.temp_c}` : "0"}
+                    °C{" "}
+                    <span className="block t-col text-[24px]">
+                      /
+                      {weatherData ? `${weatherData.current.feelslike_c}` : "0"}
+                      °C
+                    </span>
                   </h1>
                   <p className="text-[20px]">
-                    Heavy Rain{" "}
+                    {weatherData
+                      ? `${weatherData.current.condition.text}`
+                      : "Heavy Rain"}{" "}
                     <span className="block text-[16px] t-col">
-                      Feels like 31°
+                      Feels like{" "}
+                      {weatherData ? `${weatherData.current.cloud}` : "0"}°
                     </span>
                   </p>
                 </div>
@@ -302,7 +330,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-[60%] flex flex-col gap-y-4 mt-4">
+
+          <div className="w-[60%] flex flex-col gap-y-4">
+            {/* Today’s Highlight    */}
             <div className="w-full bg-col p-5 rounded-3xl mt-4">
               <h1>Today’s Highlight</h1>
               <div className="w-full grid grid-cols-4 gap-4 mt-3">
@@ -317,9 +347,14 @@ export default function Home() {
                     <p className="text-[16px]">Wind Status</p>
                   </div>
                   <p className="text-[24px]">
-                    7.90 <span className="text-[14px]">km/h</span>
+                    {weatherData ? `${weatherData.current.wind_kph}` : "0"}{" "}
+                    <span className="text-[14px]">km/h</span>
                   </p>
-                  <p className="text-[14px]">9:00 AM</p>
+                  <p className="text-[14px]">
+                    {weatherData
+                      ? `${weatherData.forecast.forecastday[0].date}`
+                      : "00.00 AM"}
+                  </p>
                 </div>
                 <div className="secondary p-3 rounded-2xl flex flex-col items-end">
                   <div className="flex gap-x-4 ">
@@ -332,7 +367,8 @@ export default function Home() {
                     <p className="text-[16px]">Humidity</p>
                   </div>
                   <p className="text-[24px]">
-                    85 <span className="text-[14px]">%</span>
+                    {weatherData ? `${weatherData.current.humidity}` : "0"}{" "}
+                    <span className="text-[14px]">%</span>
                   </p>
                   <p className="text-[14px]">Humidity is good</p>
                 </div>
@@ -344,7 +380,12 @@ export default function Home() {
                     alt="wind"
                   />
                   <p className="text-[16px]">
-                    Sunrise <span className="block text-[24px]">4:50 AM</span>
+                    Sunrise{" "}
+                    <span className="block text-[24px]">
+                      {weatherData
+                        ? `${weatherData.forecast.forecastday[0].astro.sunrise}`
+                        : "00.00 AM"}
+                    </span>
                   </p>
                 </div>
                 <div className="secondary p-3 rounded-2xl flex flex-col items-end">
@@ -358,7 +399,8 @@ export default function Home() {
                     <p className="text-[16px]">UV Index</p>
                   </div>
                   <p className="text-[24px]">
-                    4 <span className="text-[14px]">UV</span>
+                    {weatherData ? `${weatherData.current.uv}` : "0"}{" "}
+                    <span className="text-[14px]">UV</span>
                   </p>
                   <p className="text-[14px]">Moderate UV</p>
                 </div>
@@ -373,9 +415,12 @@ export default function Home() {
                     <p className="text-[16px]">Visibility</p>
                   </div>
                   <p className="text-[24px]">
-                    5 <span className="text-[14px]">km</span>
+                    {weatherData ? `${weatherData.current.vis_km}` : "0"}{" "}
+                    <span className="text-[14px]">km</span>
                   </p>
-                  <p className="text-[14px]">9:00 AM</p>
+                  <p className="text-[14px]">{weatherData
+                      ? `${weatherData.forecast.forecastday[0].date}`
+                      : "00.00 AM"}</p>
                 </div>
                 <div className="col-span-2 secondary p-3 rounded-2xl flex justify-between items-center">
                   <Image
@@ -385,30 +430,44 @@ export default function Home() {
                     alt="wind"
                   />
                   <p className="text-[16px]">
-                    Sunset <span className="block text-[24px]">6:45 PM</span>
+                    Sunset{" "}
+                    <span className="block text-[24px]">
+                      {weatherData
+                        ? `${weatherData.forecast.forecastday[0].astro.sunset}`
+                        : "00.00 PM"}
+                    </span>
                   </p>
                 </div>
               </div>
             </div>
-            {/* 10 day forecast  */}
+            {/* 7 day forecast  */}
             <div className="bg-col rounded-3xl p-5">
-              <h1 className="text-[24px]">10 Day Forecast</h1>
-              <div className="flex gap-x-5">
-                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
+              <h1 className="text-[24px]">5 Day Forecast</h1>
+
+              <div className="flex gap-x-5 mt-3">
+                {weatherData
+                  ? weatherData.forecast.forecastday.map((data, index) => (
+                      <div
+                        key={index}
+                        className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center"
+                      >
+                        <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
+                          {weekday[`${new Date(data.date).getUTCDay()}`]}
+                        </p>
+                        <Image
+                          src="/assets/user/Rain cloud.svg"
+                          width={50}
+                          height={50}
+                          alt="Rain cloud"
+                        />
+                        <p className="text-[18px]">{data.day.maxtemp_c}°</p>
+                      </div>
+                    ))
+                  : "loading...."}
+
+                {/* <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
                   <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
-                    Today
-                  </p>
-                  <Image
-                    src="/assets/user/Rain cloud.svg"
-                    width={50}
-                    height={50}
-                    alt="Rain cloud"
-                  />
-                  <p className="text-[18px]">28°C</p>
-                </div>
-                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
-                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
-                  Mon
+                    Mon
                   </p>
                   <Image
                     src="/assets/user/sun-cloud.svg"
@@ -477,7 +536,7 @@ export default function Home() {
                     alt="Rain cloud"
                   />
                   <p className="text-[18px]">28°C</p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
