@@ -32,6 +32,10 @@ body {
 .secondary{
   background: #272727;
 }
+.secondary-btn::after{
+  background:#262626;
+
+}
 .icon-col{
   color: #5E5E5E;
 }

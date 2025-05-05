@@ -156,7 +156,7 @@ export default function Home() {
             >
               <input type="checkbox" value="" className="sr-only peer" />
 
-              <div className="relative w-20 h-10 bg-red-100 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-0.5 after:start-[7px] after:bg-white  after:border after:rounded-full after:h-9 after:w-9 after:transition-all dark:border-gray-600 peer-checked:bg-blue-100 dark:peer-checked:bg-blue-100">
+              <div className="relative w-20 h-10 bg-col peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-0.5 after:start-[5px] secondary-btn after:rounded-full after:h-9 after:w-9 after:transition-all after:shadow-sm dark:border-gray-600">
                 <Image
                   className="absolute bottom-[25%] left-[60%]"
                   src="/assets/user/moon.svg"
