@@ -9,12 +9,12 @@ export default function Home() {
   const [weatherData, setWeatherData] = useState();
 
   const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
+  
   function handleSearch() {
     const input1 = document.querySelector("input");
-    console.log(city);
+    // console.log(city);
     setCityName(city);
-    console.log("city name", cityName);
+    // console.log("city name", cityName);
     setCity("");
     input1.value = "";
   }
@@ -32,7 +32,7 @@ export default function Home() {
         const response = await fetch(url);
         const data = await response.json();
         setWeatherData(data);
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -84,7 +84,7 @@ export default function Home() {
               src="/assets/main/4.svg"
               width={20}
               height={20}
-              alt="5.svg"
+              alt="4.svg"
             />
           </Link>
           <Link href="/">
@@ -112,12 +112,13 @@ export default function Home() {
 
       {/* main contents */}
       <div className="w-[90%]">
-        <button
+        {/* demo button  */}
+        {/* <button
           className="z-1 border-1 bg-red-700"
           onClick={() => handleDemo()}
         >
           demo
-        </button>
+        </button> */}
         {/* main top-bar contents */}
         <div className="flex justify-between items-center">
           {/* user name  */}
@@ -144,7 +145,7 @@ export default function Home() {
               src="/assets/user/search.svg"
               width={25}
               height={25}
-              alt="up.svg"
+              alt="search.svg"
               onClick={() => handleSearch()}
             />
 
@@ -163,7 +164,6 @@ export default function Home() {
                   width={20}
                   height={20}
                   alt="up.svg"
-                  onClick={() => handleSearch()}
                 />
                 <Image
                   className="absolute bottom-[25%] left-[20%]"
@@ -171,7 +171,6 @@ export default function Home() {
                   width={20}
                   height={20}
                   alt="up.svg"
-                  onClick={() => handleSearch()}
                 />
               </div>
             </label>
@@ -183,16 +182,14 @@ export default function Home() {
                 src="/assets/user/profile.svg"
                 width={55}
                 height={55}
-                alt="up.svg"
-                onClick={() => handleSearch()}
+                alt="profile.svg"
               />
               <Image
                 className="cursor-pointer"
                 src="/assets/user/arrow.svg"
                 width={15}
                 height={15}
-                alt="up.svg"
-                onClick={() => handleSearch()}
+                alt="arrow.svg"
               />
             </div>
           </div>
