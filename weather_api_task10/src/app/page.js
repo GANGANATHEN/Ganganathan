@@ -18,7 +18,7 @@ export default function Home() {
     "Friday",
     "Saturday",
   ];
-  const numbers = ["Australia", "Japan", "india"];
+  const numbers = ["Australia", "Japan", "india","china","America"];
   const allData = [];
 
   useEffect(() => {
@@ -41,47 +41,6 @@ export default function Home() {
 
     fetchWeatherData();
   }, []);
-
-  const [allcity, setAllcity] = useState([])
-
-  useEffect(() => {
-    const getcity = async () => {
-      const cities = ["kerala", "mumbai", "puna", "karnataka"];
-      const values = [];
- 
-      try {
-        // const apikey = "9e91b23002c8b2d60ae804d8311bc6f4";
-        for (let item of cities) {
-          // console.log(item);
-          const Url1 = `http://api.weatherapi.com/v1/forecast.json?key=7263337b5ed54a638f8120107250205&q=${item}&days=7&aqi=no`;
-          const response = await fetch(Url1);
-          const output = await response.json();
-          if (output.error) {
-            setError("error");
-          } else {
-            // console.log(output);
-            values.push({output});
-          }
-        }
-        setAllcity(values);
-
-        // console.log(values);
-      } catch (err) {
-        setError("error");
-      }
- 
-    };
- 
-    getcity();
-  }, []);
-  console.log(allcity, "output");
-if (allcity.length > 0) {
-  console.log(allcity[0].output.location.name);
-}
-
-  // console.log(allcity, "output");
-  // console.log(allcity[0]?.output?.location?.name);
-  // console.log(allcity[0].output.location.name);
 
   function handleSearch() {
     const input1 = document.querySelector("input");

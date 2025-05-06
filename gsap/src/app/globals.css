@@ -24,7 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-.box{
+.g-hover{
+  background: rgb(196, 164, 226);
+}
+.g-hover:hover {
+  .g-child{
+  background: rgb(191, 141, 238);
+
+  }
+}
+/* .box{
   width: 40px;
   height: 40px;
-}
+  background: rgb(196, 164, 226);
+} */
