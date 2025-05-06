@@ -7,9 +7,39 @@ export default function Home() {
   const [city, setCity] = useState("");
   const [cityName, setCityName] = useState("Thousand Lights");
   const [weatherData, setWeatherData] = useState();
+  const [weatherDataList, setWeatherDataList] = useState([]);
 
-  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  
+  const weekday = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const numbers = ["Australia", "Japan", "india"];
+
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      const allData = [];
+      for (const city of numbers) {
+        try {
+          const url = `https://api.weatherapi.com/v1/forecast.json?key=fbd09534ac13463aad5115428250205&q=${city}&days=5&aqi=no&alerts=no`;
+          const response = await fetch(url);
+          const data = await response.json();
+          allData.push({ data });
+        } catch (error) {
+          console.log(`Error fetching for ${city}:`, error);
+        }
+        // console.log("i'm still alive");
+      }
+      setWeatherDataList(allData);
+    };
+
+    fetchWeatherData();
+  }, []);
+
   function handleSearch() {
     const input1 = document.querySelector("input");
     // console.log(city);
@@ -18,9 +48,10 @@ export default function Home() {
     setCity("");
     input1.value = "";
   }
+
   function handleDemo() {
     console.log("current cityName", weatherData.location.name);
-    console.log("feature",new Date(1746256500).getUTCDay());
+    console.log("feature", new Date(1746256500).getUTCDay());
   }
   function handleTheme() {
     console.log("yes i'm handleTheme");
@@ -28,11 +59,11 @@ export default function Home() {
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
-        const url = `https://api.weatherapi.com/v1/forecast.json?key=fbd09534ac13463aad5115428250205&q=${cityName}&days=5&aqi=no&alerts=no`;
+        const url = `https://api.weatherapi.com/v1/forecast.json?key=fbd09534ac13463aad5115428250205&q=${cityName}&days=7&aqi=no&alerts=no`;
         const response = await fetch(url);
         const data = await response.json();
         setWeatherData(data);
-        // console.log(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -43,8 +74,8 @@ export default function Home() {
   return (
     <section className="w-full flex p-7 gap-4 text-white">
       {/* side bar */}
-      <div className="bg-col flex flex-col rounded-4xl shadow-sm ">
-        <div className="flex flex-col  p-7  items-center text-center gap-2">
+      <div className="bg-col flex flex-col rounded-4xl shadow-sm justify-between">
+        <div className="border-gradient border-gradient-gray only-bottom flex flex-col  p-7  items-center text-center gap-2">
           <Image
             className="mt-6"
             src="/assets/main/menu.svg"
@@ -54,7 +85,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="icon-col border-gradient border-gradient-gray only-top pt-7 flex flex-col items-center gap-y-7 ">
+        <div className="icon-col pt-7 flex flex-col items-center gap-y-7 ">
           <Link href="/">
             <Image
               src="/assets/main/1.svg"
@@ -157,7 +188,7 @@ export default function Home() {
             >
               <input type="checkbox" value="" className="sr-only peer" />
 
-              <div className="relative w-20 h-10 bg-col peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-0.5 after:start-[5px] secondary-btn after:rounded-full after:h-9 after:w-9 after:transition-all after:shadow-sm dark:border-gray-600">
+              <div className="relative w-20 h-10 bg-col peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-0.5 after:start-[5px] secondary-btn after:rounded-full after:h-9 after:w-9 after:transition-all after:shadow-sm">
                 <Image
                   className="absolute bottom-[25%] left-[60%]"
                   src="/assets/user/moon.svg"
@@ -230,9 +261,13 @@ export default function Home() {
               <div className="flex justify-between mt-4">
                 <div className="text-[36px]">
                   <h1>
-                  {weatherData
-                        ? weekday[`${new Date(weatherData.forecast.forecastday[0].date).getUTCDay()}`]
-                        : "04 Aug,2024"}{" "}
+                    {weatherData
+                      ? weekday[
+                          `${new Date(
+                            weatherData.forecast.forecastday[0].date
+                          ).getUTCDay()}`
+                        ]
+                      : "04 Aug,2024"}{" "}
                     <span className="block text-[16px]">
                       {weatherData
                         ? `${weatherData.forecast.forecastday[0].date}`
@@ -285,46 +320,38 @@ export default function Home() {
                   />
                 </div>
               </div>
-              <div className="secondary p-3 rounded-2xl flex justify-between">
-                <div>
-                  <p className="t-col text-[14px]">Australia</p>
-                  <h1 className="text-[24px]">Canberra</h1>
-                  <p className="text-[14px]">Sunny</p>
+              {weatherDataList.map((item, index) => (
+                <div
+                  key={index}
+                  className="secondary p-3 rounded-2xl flex justify-between"
+                >
+                  <div>
+                    <p className="t-col text-[14px]">
+                      {item.data.location.country}
+                    </p>
+                    <h1 className="text-[24px]">{item.data.location.name}</h1>
+                    <p className="text-[14px]">
+                      {item.data.current.condition.text}
+                    </p>
+                  </div>
+                  <div>
+                    <Image
+                      src="/assets/user/o-sun.svg"
+                      width={70}
+                      height={70}
+                      alt="original sun"
+                    />
+                  </div>
+                  <div>
+                    <h1 className="text-[24px]">
+                      {item.data.current.temp_c}°{" "}
+                      <span className="t-col text-[18px]">
+                        /{item.data.current.feelslike_c}°
+                      </span>{" "}
+                    </h1>
+                  </div>
                 </div>
-                <div>
-                  <Image
-                    src="/assets/user/o-sun.svg"
-                    width={70}
-                    height={70}
-                    alt="original sun"
-                  />
-                </div>
-                <div>
-                  <h1 className="text-[24px]">
-                    32° <span className="t-col text-[18px]">/24°</span>{" "}
-                  </h1>
-                </div>
-              </div>
-              <div className="secondary p-3 rounded-2xl flex justify-between">
-                <div>
-                  <p className="t-col text-[14px] ">Japan</p>
-                  <h1 className="text-[24px]">Tokyo</h1>
-                  <p className="text-[14px] ">Mostly Sunny</p>
-                </div>
-                <div>
-                  <Image
-                    src="/assets/user/sun-cloud.svg"
-                    width={70}
-                    height={70}
-                    alt="sun with cloud"
-                  />
-                </div>
-                <div>
-                  <h1 className="text-[24px]">
-                    30°<span className="t-col text-[18px]">/19°</span>{" "}
-                  </h1>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -415,9 +442,11 @@ export default function Home() {
                     {weatherData ? `${weatherData.current.vis_km}` : "0"}{" "}
                     <span className="text-[14px]">km</span>
                   </p>
-                  <p className="text-[14px]">{weatherData
+                  <p className="text-[14px]">
+                    {weatherData
                       ? `${weatherData.forecast.forecastday[0].date}`
-                      : "00.00 AM"}</p>
+                      : "00.00 AM"}
+                  </p>
                 </div>
                 <div className="col-span-2 secondary p-3 rounded-2xl flex justify-between items-center">
                   <Image
@@ -441,100 +470,83 @@ export default function Home() {
             <div className="bg-col rounded-3xl p-5">
               <h1 className="text-[24px]">5 Day Forecast</h1>
 
-              <div className="flex gap-x-5 mt-3">
-                {weatherData
-                  ? weatherData.forecast.forecastday.map((data, index) => (
-                      <div
-                        key={index}
-                        className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center"
-                      >
-                        <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
-                          {weekday[`${new Date(data.date).getUTCDay()}`]}
-                        </p>
-                        <Image
-                          src="/assets/user/Rain cloud.svg"
-                          width={50}
-                          height={50}
-                          alt="Rain cloud"
-                        />
-                        <p className="text-[18px]">{data.day.maxtemp_c}°</p>
-                      </div>
-                    ))
-                  : "loading...."}
-
-                {/* <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
-                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
-                    Mon
-                  </p>
-                  <Image
-                    src="/assets/user/sun-cloud.svg"
-                    width={50}
-                    height={50}
-                    alt="sun with cloud"
-                  />
-                  <p className="text-[18px]">28°C</p>
+              {/* <div
+                id="controls-carousel"
+                class="relative w-full"
+                data-carousel="static"
+              > */}
+                <div class="relative overflow-hidden rounded-lg md:h-56">
+                  <div className="gap-x-5 flex mt-3">
+                    {weatherData
+                      ? weatherData.forecast.forecastday.map((data, index) => (
+                          <div
+                            key={index}
+                            className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center"
+                          >
+                            <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
+                              {weekday[`${new Date(data.date).getUTCDay()}`]}
+                            </p>
+                            <Image
+                              src="/assets/user/Rain cloud.svg"
+                              width={50}
+                              height={50}
+                              alt="Rain cloud"
+                            />
+                            <p className="text-[18px]">{data.day.maxtemp_c}°</p>
+                          </div>
+                        ))
+                      : "loading...."}
+                  </div>
                 </div>
-                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
-                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
-                    Tue
-                  </p>
-                  <Image
-                    src="/assets/user/Rain cloud.svg"
-                    width={50}
-                    height={50}
-                    alt="Rain cloud"
-                  />
-                  <p className="text-[18px]">28°C</p>
-                </div>
-                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
-                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
-                    Wed
-                  </p>
-                  <Image
-                    src="/assets/user/Rain cloud.svg"
-                    width={50}
-                    height={50}
-                    alt="Rain cloud"
-                  />
-                  <p className="text-[18px]">28°C</p>
-                </div>
-                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
-                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
-                    Thu
-                  </p>
-                  <Image
-                    src="/assets/user/Rain cloud.svg"
-                    width={50}
-                    height={50}
-                    alt="Rain cloud"
-                  />
-                  <p className="text-[18px]">28°C</p>
-                </div>
-                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
-                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
-                    Fri
-                  </p>
-                  <Image
-                    src="/assets/user/Rain cloud.svg"
-                    width={50}
-                    height={50}
-                    alt="Rain cloud"
-                  />
-                  <p className="text-[18px]">28°C</p>
-                </div>
-                <div className="secondary flex flex-col gap-y-5 p-3 rounded-2xl items-center">
-                  <p className="text-[14px] p-3 border-gradient border-gradient-gray only-bottom">
-                    Sat
-                  </p>
-                  <Image
-                    src="/assets/user/Rain cloud.svg"
-                    width={50}
-                    height={50}
-                    alt="Rain cloud"
-                  />
-                  <p className="text-[18px]">28°C</p>
-                </div> */}
-              </div>
+                {/* <button
+                  type="button"
+                  class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                  data-carousel-prev
+                >
+                  <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg
+                      class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 1 1 5l4 4"
+                      />
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                  data-carousel-next
+                >
+                  <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg
+                      class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 9 4-4-4-4"
+                      />
+                    </svg>
+                    <span class="sr-only">Next</span>
+                  </span>
+                </button> */}
+              {/* </div> */}
             </div>
           </div>
         </div>
