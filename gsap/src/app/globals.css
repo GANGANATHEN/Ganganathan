@@ -24,7 +24,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-.g-hover{
+/* .g-hover{
   background: rgb(196, 164, 226);
 }
 .g-hover:hover {
@@ -32,9 +32,96 @@ body {
   background: rgb(191, 141, 238);
 
   }
-}
-/* .box{
-  width: 40px;
-  height: 40px;
-  background: rgb(196, 164, 226);
 } */
+
+/* cards style start */
+
+/* background: rgb(125 211 252); */
+.store-img {
+  background: rgb(125 211 252);
+  mix-blend-mode: darken;
+  position: relative;
+}
+.store:hover{
+  .store-img::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(125 211 252);
+    mix-blend-mode: lighten;
+    pointer-events: none;
+    /* filter: invert(70%); */
+  }
+}
+
+/* background: #fbd38d; */
+.website-img {
+  background: #fbd38d;
+  mix-blend-mode: darken;
+  position: relative;
+}
+.website:hover{
+  .website-img::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fbd38d;
+    mix-blend-mode: lighten;
+    pointer-events: none;
+    /* filter: invert(70%); */
+  }
+}
+
+/* background: #CF9FFF; */
+.email-img {
+  background: #CF9FFF;
+  mix-blend-mode: darken;
+  position: relative;
+}
+.email:hover{
+  .email-img::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #CF9FFF;
+    mix-blend-mode: lighten;
+    pointer-events: none;
+
+  }
+}
+
+/* cards style end */
+
+/* card hover start */
+.store{
+  position: relative;
+}
+.store>div:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(125 211 252);;
+  transition: .5s;
+  rotate: -1deg;
+  mix-blend-mode: color;
+}
+.store>div:hover:before {
+  top: 0;
+}
+
+/* card hover end */
