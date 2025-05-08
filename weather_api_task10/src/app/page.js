@@ -18,7 +18,7 @@ export default function Home() {
     "Friday",
     "Saturday",
   ];
-  const numbers = ["Australia", "Japan", "india","china","America"];
+  const numbers = ["Australia", "Japan"];
   const allData = [];
 
   useEffect(() => {
