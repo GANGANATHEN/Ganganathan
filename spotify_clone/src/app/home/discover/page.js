@@ -2,7 +2,7 @@ import React from 'react'
 
 const Discover = () => {
   return (
-    <div className="px-10 text-primary">
+    <div>
       im discover
     </div>
   )

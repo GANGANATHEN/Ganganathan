@@ -44,3 +44,9 @@ body {
   border-radius: 12px;
 }
 /* spotify using colors code end */
+
+/* song color start */
+.song-bg{
+  background:#333842 ;
+}
+/* song color end */
