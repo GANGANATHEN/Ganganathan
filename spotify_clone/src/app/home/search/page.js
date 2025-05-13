@@ -13,9 +13,9 @@ const Search = () => {
           <Image src="/search/3-dot.svg" width={25} height={25} alt="3-dot" />
         </div>
         {/* Recent history images */}
-        <div className="flex gap-x-6">
+        <div className="flex gap-x-6 text-[12px]">
           <div className="relative flex">
-            <div className="">
+            <div className="text-center">
               <Image
                 className="rounded-[50%]"
                 src="/search/history/a1.png"
@@ -30,10 +30,11 @@ const Search = () => {
                 height={25}
                 alt="clear image"
               />
+              <p className="mt-2">David Browie</p>
             </div>
           </div>
           <div className="relative flex">
-            <div className="">
+            <div className="text-center">
               <Image
                 className="rounded-[50%]"
                 src="/search/history/a2.svg"
@@ -48,6 +49,7 @@ const Search = () => {
                 height={25}
                 alt="clear image"
               />
+              <p className="mt-2">Daft Punk</p>
             </div>
           </div>
           <div className="relative flex">
@@ -60,7 +62,7 @@ const Search = () => {
                 alt="first image"
               />
               <Image
-                className="absolute top-[-7%] left-1"
+                className="absolute top-[-5%] left-1"
                 src="/search/history/1/11.svg"
                 width={90}
                 height={90}
@@ -73,6 +75,8 @@ const Search = () => {
                 height={25}
                 alt="clear image"
               />
+              <p className="mt-2 text-secondary">Black Holes...</p>
+              <p className="mt-2">Muse</p>
             </div>
           </div>
         </div>
