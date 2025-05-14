@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
         {/* navbar and sidebar contents */}
         <section className="flex">
           {/* sidebar */}
-          <section className="w-[20%] shadow-sm flex flex-col gap-y-3 pb-4 sticky">
+          <section className="w-[20%] sticky top-0 z-50 h-screen bg-white border-1 border-gray-100 flex flex-col gap-y-3 pb-4">
             <Link href="/" className="flex gap-3 px-[10%] py-[5%]">
               <Image src="/logo/image.png" width={30} height={25} alt="logo" />
               <p className="font-bold text-2xl">Mantis</p>
@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
             {navLinks.map((data, index) => (
               <div key={index.id}>
                 {data.p ? (
-                  <p className="text-gray-400 text-[12px] px-[10%] mb-3">
+                  <p className="text-stone-400 text-[12px] px-[10%] mb-3">
                     {data.p}
                   </p>
                 ) : null}
@@ -77,7 +77,8 @@ export default function RootLayout({ children }) {
 
           {/* navbar and main contents */}
           <section className="w-[80%] flex flex-col">
-            <div className="sticky shadow-sm px-[2%] py-[1%] flex justify-between items-center">
+          {/* navbar */}
+            <div className="sticky top-0 z-50 bg-white border-1 border-l-0 border-gray-100 px-[2%] py-[1%] flex justify-between items-center">
               <div className="flex gap-x-4">
                 <p className="cursor-pointer p-2 rounded-sm hover:bg-gray-200">
                   <AiOutlineMenuFold />
@@ -105,7 +106,8 @@ export default function RootLayout({ children }) {
                 </div>
               </div>
             </div>
-            <div className="px-[5%] py-[1%] bg-gray-50">{children}</div>
+            {/* main contents */}
+            <div className="h-screen px-[5%] py-[2%] bg-gray-50 overflow-y-auto">{children}</div>
           </section>
         </section>
       </body>

@@ -11,7 +11,7 @@ export default function Home() {
         <h1 className="text-black">Dashboard</h1>
         <div className="flex justify-between mt-3">
         {dashBoard.map((data,index)=>(
-          <div key={index.id} className="p-3 bg-white rounded-lg shadow-sm">
+          <div key={index.id} className="p-3 bg-white rounded-lg border-1 border-gray-200">
             <p className="text-gray-400">{data.title}</p>
             <div className="flex items-center justify-between mt-1">
               <span className="font-black text-[18px]">{data.total}</span>
