@@ -15,7 +15,7 @@ export const navLinks = [
   {
     id: 0,
     p: "Navigation",
-    link:"/",
+    link:"/dashboard",
     icon: <AiOutlineDashboard />,
     link_p: "Dashboard",
   },
@@ -35,26 +35,26 @@ export const navLinks = [
   {
     id: 3,
     p: "Utilities",
-    link:"/typography",
+    link:"/dashboard/typography",
     icon: <FiType />,
     link_p: "Typography",
   },
   {
     id: 4,
-    link:"/color",
+    link:"/dashboard/color",
     icon: <MdOutlineFormatColorFill />,
     link_p: "Color",
   },
   {
     id: 5,
-    link:"/shadow",
+    link:"/dashboard/shadow",
     icon: <FaBarcode />,
     link_p: "Shadow",
   },
   {
     id: 6,
     p:"Support",
-    link:"/samplepage",
+    link:"/dashboard/samplepage",
     icon: <AiOutlineChrome />,
     link_p: "Sample Page",
   },
@@ -118,7 +118,7 @@ export const Orders =[
     id:0,
     tracking:"13256498",
     product:"Keyboard",
-    total:"125",
+    order:"125",
     status:"Rejected",
     total:"$70,999"
   },
@@ -126,7 +126,7 @@ export const Orders =[
     id:1,
     tracking:"13286564",
     product:"Computer Accessories",
-    total:"100",
+    order:"100",
     status:"Approved",
     total:"$83,348"
   },
@@ -134,7 +134,7 @@ export const Orders =[
     id:2,
     tracking:"84564564",
     product:"Camera Lens",
-    total:"40",
+    order:"40",
     status:"Rejected",
     total:"$40,570"
   },
@@ -142,7 +142,7 @@ export const Orders =[
     id:3,
     tracking:"86739658",
     product:"TV",
-    total:"99",
+    order:"99",
     status:"Pending",
     total:"$410,780"
   },
@@ -150,7 +150,7 @@ export const Orders =[
     id:4,
     tracking:"98652366",
     product:"Handset",
-    total:"50",
+    order:"50",
     status:"Approved",
     total:"$10,239"
   },
@@ -158,7 +158,7 @@ export const Orders =[
     id:5,
     tracking:"98753263",
     product:"Mouse",
-    total:"89",
+    order:"89",
     status:"Rejected",
     total:"$10,570"
   },
@@ -166,14 +166,14 @@ export const Orders =[
     id:6,
     tracking:"98753275",
     product:"Desktop",
-    total:"185",
+    order:"185",
     status:"Approved",
     total:"$98,063"
   },{
     id:7,
     tracking:"98753291",
     product:"Chair",
-    total:"100",
+    order:"100",
     status:"Pending",
     total:"$14,001"
   },
@@ -181,7 +181,7 @@ export const Orders =[
     id:8,
     tracking:"98756325",
     product:"Mobile",
-    total:"355",
+    order:"355",
     status:"Approved",
     total:"$90,989"
   },
@@ -189,7 +189,7 @@ export const Orders =[
     id:9,
     tracking:"98764564",
     product:"Laptop",
-    total:"300",
+    order:"300",
     status:"Pending",
     total:"$180,139"
   },

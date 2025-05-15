@@ -26,7 +26,7 @@ const Samplepage = () => {
       </section>
       {/* footer section */}
       <section>
-        <div className="flex justify-between items-center text-[12px]">
+        <div className="flex justify-between items-center text-[12px] px-5">
           <p>© All rights reserved <a className="hover:underline text-blue-500" href="https://codedthemes.com/" target="blank">CodedThemes</a></p>
           <p>Distributed by  <a className="hover:underline text-blue-500" href="https://themewagon.com/" target="blank">ThemeWagon</a></p>
         </div>
