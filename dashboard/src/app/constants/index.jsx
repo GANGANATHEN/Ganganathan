@@ -15,7 +15,7 @@ export const navLinks = [
   {
     id: 0,
     p: "Navigation",
-    link:"/dashboard",
+    link:"/",
     icon: <AiOutlineDashboard />,
     link_p: "Dashboard",
   },
@@ -35,26 +35,27 @@ export const navLinks = [
   {
     id: 3,
     p: "Utilities",
-    link:"/dashboard/typography",
+    link:"/typography",
     icon: <FiType />,
     link_p: "Typography",
   },
   {
     id: 4,
-    link:"/dashboard/color",
+    link:"/color",
     icon: <MdOutlineFormatColorFill />,
     link_p: "Color",
   },
+  // /dashboard
   {
     id: 5,
-    link:"/dashboard/shadow",
+    link:"/shadow",
     icon: <FaBarcode />,
     link_p: "Shadow",
   },
   {
     id: 6,
     p:"Support",
-    link:"/dashboard/samplepage",
+    link:"/samplepage",
     icon: <AiOutlineChrome />,
     link_p: "Sample Page",
   },

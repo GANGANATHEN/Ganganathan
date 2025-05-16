@@ -28,10 +28,8 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="shortcut icon" href="./logo/image.png" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${publicSans.variable} antialiased `}>
-        {/* <ClientLayout> */}
+      <body className={`${geistSans.variable} ${geistMono.variable} ${publicSans.variable} antialiased `}>      
           {children}
-        {/* </ClientLayout> */}
       </body>
     </html>
   );

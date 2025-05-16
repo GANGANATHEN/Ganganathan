@@ -1,18 +1,17 @@
 "use client";
-import { dashBoard, Orders } from "../constants/index.jsx";
+import { dashBoard, Orders } from "../../constants/index.jsx";
 import { useState } from "react";
 // react icons start
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
 import { FaCircle } from "react-icons/fa";
 // react icons start
-import "../globals.css";
+import "../../globals.css";
 
 export default function Dashboard() {
   const [activeView, setActiveView] = useState("month");
   const [arrowContol, setarrowContol] = useState(true);
 
-  // console.log(activeView);
 
   return (
     <div className="flex flex-col gap-y-6">
